@@ -27,10 +27,10 @@ int main() {
 
     //output chosen search
     switch(featureSelect) {
-        case 0:
+        case 1:
             selector.forwardSelection();
             break;
-        case 1;
+        case 2:
             selector.backwardElimination();
             break;
         case 3:
