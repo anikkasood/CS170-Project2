@@ -2,7 +2,7 @@
 #include <iomanip>
 
 //header files
-#include "forwardSelection/a.cpp"
+#include "SearchAlgos/search.cpp"
 
 using namespace std;
 
@@ -16,13 +16,13 @@ int main() {
 
     cout << "\n\nType the number of the algorithm you want to run:\n" 
          << "(1) Forward Selection\n"  
-         << "(2) Backward Selection\n"
+         << "(2) Backward Elimination\n"
          << "(3) Group Special Algorithm\n\n";
 
     int featureSelect;
     cin >> featureSelect;
 
-    //initialize seleciton class
+    //initialize selection class
     Selection selector(num_features);
 
     //output chosen search
@@ -34,7 +34,7 @@ int main() {
             selector.backwardElimination();
             break;
         case 3:
-            //If we wanna add a special Algo for extar credit
+            //If we wanna add a special Algo for extra credit
             break;
         default:
             selector.forwardSelection();
