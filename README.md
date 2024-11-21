@@ -45,7 +45,35 @@ Finished forward selection!! The best feature subset is {1}, which has an accura
 
 ### Backwards Selection Trace:
 
+Enter the total number of features: 4
 
+
+Type the number of the algorithm you want to run:
+(1) Forward Selection
+(2) Backward Selection
+(3) Group Special Algorithm
+
+2
+Backward Elimination:
+Using all features and 'random' evaluation, I get an accuracy of 93.488%
+Beginning search.
+
+Using feature(s) {2,3,4} accuracy is 32.9713%
+Using feature(s) {1,3,4} accuracy is 48.6652%
+Using feature(s) {1,2,4} accuracy is 15.331%
+Using feature(s) {1,2,3} accuracy is 67.8204%
+Feature set {1,2,3} was best, accuracy is 67.8204%
+
+Using feature(s) {2,3} accuracy is 58.1685%
+Using feature(s) {1,3} accuracy is 37.6475%
+Using feature(s) {1,2} accuracy is 41.5552%
+Feature set {2,3} was best, accuracy is 58.1685%
+
+Using feature(s) {3} accuracy is 18.1302%
+Using feature(s) {2} accuracy is 14.1961%
+Feature set {3} was best, accuracy is 18.1302%
+
+Finished backward elimination!! The best feature subset is {1,2,3}, which has an accuracy of 67.8204%
 
 ## Part 2:
 
