@@ -15,7 +15,7 @@ Enter the total number of features: 4<br />
 <br />
 Type the number of the algorithm you want to run:<br />
 (1) Forward Selection<br />
-(2) Backward Selection<br />
+(2) Backward Elimination<br />
 (3) Group Special Algorithm<br />
 <br />
 1<br />
@@ -43,14 +43,14 @@ Feature set {1,2,3,4} was best, accuracy is 80.6055%<br />
 <br />
 Finished forward selection!! The best feature subset is {1}, which has an accuracy of 84.2917%<br />
 
-### Backwards Selection Trace:
+### Backward Elimination Trace:
 Enter the total number of features: 4 <br />
 <br />
 <br />
 <br />
 Type the number of the algorithm you want to run:<br />
 (1) Forward Selection <br />
-(2) Backward Selection<br />
+(2) Backward Elimination<br />
 (3) Group Special Algorithm<br />
 <br /><br />
 2<br />
