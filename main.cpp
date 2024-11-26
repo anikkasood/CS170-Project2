@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
     vector<DataRow> data = loadData(filename);
 
     // Normalize data
-    normalizeData(data);
+    zNormalizeData(data);
 
     // Print normalized data
     std::cout << "Normalized Data:" << std::endl;
