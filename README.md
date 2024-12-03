@@ -78,11 +78,101 @@ Finished backward elimination!! The best feature subset is {1,2,3}, which has an
 ## Part 2:
 
 ### Code for Nearest Neighbor Classifier:
+```
+class Classifier {
+private:
+    vector<DataRow> training;  // Store training data
 
+    DataRow test;              // Store test data
 
+public:
+    // Constructor with optional parameters to initialize training data and test data
+    Classifier(const vector<DataRow>& trainingData = {}, const DataRow& testData = {}) {
+        training = trainingData;  // Initialize training data
+        test = testData;          // Initialize test data
+    }
 
+    // Training function that takes training data as argument
+    void train(const vector<DataRow>& trainingData) {
+        cout << "Training the classifier..." << endl;
+        training = trainingData;  // Store the provided training data
+    }
+
+     double calc_dist(const DataRow& a, const DataRow& b) {
+        double sum = 0.0;
+        for (size_t i = 0; i < a.features.size(); ++i) {
+            double diff = a.features[i] - b.features[i];
+            sum += diff * diff;
+        }
+        return sqrt(sum);  // Euclidean distance
+    }
+
+    // Method to predict the label of the test row
+    int predict(const DataRow& test_row, const vector<DataRow>& training_data) {
+        double min_dist = numeric_limits<double>::max();
+        int predicted_label = -1;
+
+        // Find the closest training row
+        for (const auto& training_row : training_data) {
+            double dist = calc_dist(training_row, test_row);
+            if (dist < min_dist) {
+                min_dist = dist;
+                predicted_label = training_row.label;
+            }
+        }
+        return predicted_label;
+    }
+};
+```
 ### Code for Nearest Neighbor Validator:
+```
+//evaluation function
+double eval(const set<int>& features, const vector<DataRow>& data_a00) {
+    vector<DataRow> data_0;
+    Classifier classifier;
+    // Prepare the data by extracting the features specified in 'features'
+    for (const auto& row : data_a00) {
+        DataRow new_row = row;
+        vector<double> features_test;
 
+        for (const int feature_index : features) {
+            if (feature_index >= 0 && feature_index - 1 < new_row.features.size()) {
+                features_test.push_back(new_row.features[feature_index - 1]);  // Adjusted for 1-based indexing
+            }
+        }
+
+        new_row.features = features_test;
+        data_0.push_back(new_row);
+    }
+
+    int correct_predictions = 0;
+
+    // Perform leave-one-out cross-validation
+    for (size_t i = 0; i < data_0.size(); ++i) {
+        DataRow test_data = data_0[i];
+
+        // Prepare the training data by leaving out the current test data
+        vector<DataRow> training_data;
+        for (size_t j = 0; j < data_0.size(); ++j) {
+            if (j != i) {
+                training_data.push_back(data_0[j]);
+            }
+        }
+
+        // Predict the label for the test data
+        int predicted_label = classifier.predict(test_data, training_data);
+
+        // Compare the predicted label with the true label
+        if (predicted_label == test_data.label) {
+            ++correct_predictions;
+        }
+    }
+
+    // Calculate and return the accuracy
+    double accuracy = static_cast<double>(correct_predictions) / data_0.size();
+    return accuracy * 100;  // Return the accuracy as a percentage
+}
+```
 
 ### Normalizing Small Test Dataset:
 Choose data set to test (1 or 2): 1<br />
