@@ -24,8 +24,10 @@ int main(int argc, char* argv[]) {
         case 2:
             //test large dataset
             filename = "test/large-test-dataset.txt";
+            break;
         default:
             filename = "test/small-test-dataset.txt";
+            break;
     }
 
     //see file name is right
