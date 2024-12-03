@@ -9,6 +9,7 @@
 #include <algorithm>
 
 #include <cmath>
+
 // Load data from a file
 std::vector<DataRow> loadData(const std::string& filename) {
 
@@ -105,9 +106,6 @@ void zNormalizeData(std::vector<DataRow>& data) {
     }
 }
 
-
-
-
 // Print data to the console
 void printData(const std::vector<DataRow>& data) {
     for (const auto& row : data) {
@@ -118,13 +116,3 @@ void printData(const std::vector<DataRow>& data) {
         std::cout << std::endl;
     }
 }
-
-
-
-
-
-
-
-
-
-

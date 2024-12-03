@@ -8,44 +8,29 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    /* srand(static_cast<unsigned>(time(nullptr)));
+    //input which data set to test
+    int test = 0;
+    cout << "Choose data set to test (1 or 2): ";
+    cin >> test;
 
-    //user input
-    int num_features;
-    cout << "Enter the total number of features: ";
-    cin >> num_features;
-
-    cout << "\n\nType the number of the algorithm you want to run:\n" 
-         << "(1) Forward Selection\n"  
-         << "(2) Backward Elimination\n"
-         << "(3) Group Special Algorithm\n\n";
-
-    int featureSelect;
-    cin >> featureSelect;
-
-    //initialize selection class
-    Selection selector(num_features);
-
-    //output chosen search
-    switch(featureSelect) {
+    //get file name
+    //string filename = argv[1];
+    string filename;
+    switch(test) {
         case 1:
-            selector.forwardSelection();
+            //test small dataset
+            filename = "test/small-test-dataset.txt";
             break;
         case 2:
-            selector.backwardElimination();
-            break;
-        case 3:
-            //If we wanna add a special Algo for extra credit
-            break;
+            //test large dataset
+            filename = "test/large-test-dataset.txt";
         default:
-            selector.forwardSelection();
-            break;
+            filename = "test/small-test-dataset.txt";
     }
 
-    return 0; */
-    string filename = argv[1];
-
+    //see file name is right
     cout << filename << endl;
+
     // Load data from file
     vector<DataRow> data = loadData(filename);
 
@@ -83,18 +68,5 @@ int main(int argc, char* argv[]) {
             break;
     }
 
-
-
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-

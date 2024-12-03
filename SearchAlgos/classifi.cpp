@@ -10,8 +10,8 @@
 
 #include "data.h"  // Assuming you have DataRow defined in this header
 using namespace std;
-class Classifier {
 
+class Classifier {
 private:
     vector<DataRow> training;  // Store training data
 
@@ -55,13 +55,3 @@ public:
         return predicted_label;
     }
 };
-
-
-
-
-
-
-
-
-
-

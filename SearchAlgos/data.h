@@ -11,7 +11,6 @@ struct DataRow {
 };
 
 // Function declarations
-
 std::vector<DataRow> loadData(const std::string& filename);
 void normalizeData(std::vector<DataRow>& data);
 
@@ -20,11 +19,3 @@ void zNormalizeData(std::vector<DataRow>& data);
 void printData(const std::vector<DataRow>& data);
 
 #endif
-
-
-
-
-
-
-
-
