@@ -74,7 +74,14 @@ Using feature(s) {2} accuracy is 14.1961%<br />
 Feature set {3} was best, accuracy is 18.1302%<br />
 <br />
 Finished backward elimination!! The best feature subset is {1,2,3}, which has an accuracy of 67.8204%<br />
+
 ## Part 2:
+
+### Code for Nearest Neighbor Classifier:
+
+
+
+### Code for Nearest Neighbor Validator:
 
 
 
