@@ -2,7 +2,9 @@
 
 ## Group Members:
 
-### Jyro Jimenez, Nhan Nguyen, Anika Sood
+### Jyro Jimenez - 862231763
+### Nhan Nguyen - 862315577
+### Anika Sood - 862283943
 
 ## Discussion Time: 2pm
 
@@ -442,3 +444,50 @@ Feature set {27} was best, accuracy is 84.700%<br />
 Finished backward elimination!! The best feature subset is {27}, which has an accuracy of 84.700%<br />
 
 ## Part 3:
+### Challenges:
+**Feature Subset Evaluation:** Ensuring the eval method accurately predicts and calculates the accuracy using leave-one-out cross-validation was a key challenge. Debugging and verifying the correctness of the feature evaluation process required careful thought.
+
+**Data Preparation:** Preprocessing the data, including loading, normalizing, and handling missing values, presented challenges. Incorrectly formatted data could lead to runtime errors or incorrect results.
+
+**Algorithm Design:** Implementing forward selection and backward elimination algorithms efficiently while ensuring clarity in logic and handling edge cases (e.g., no features, all features) was a significant challenge.
+
+**Computational Complexity:** Both forward selection and backward elimination algorithms involve a combinatorial evaluation of subsets, leading to potential performance bottlenecks on larger datasets.
+
+**Interpretability:** Determining which features meaningfully separate classes and analyzing their impact on accuracy required domain knowledge and statistical interpretation.
+
+### Your design (objects and methods):
+**Objects:**
+- DataRow: Represents a single row of data with a label and a vector of feature values.
+- Selection: Implements feature selection algorithms (forwardSelection and backwardElimination) and contains methods for evaluating subsets.
+**Methods:**
+- eval: Evaluates a feature subset using leave-one-out cross-validation.
+- forwardSelection: Greedily adds features that improve accuracy.
+- backwardElimination: Iteratively removes features to maintain or improve accuracy.
+**Key Components:**
+- Data Preparation: Handles loading, normalization, and formatting via utility functions (loadData, normalizeData).
+- Classifier Integration: A separate Classifier object predicts labels for test data.
+- Accuracy Calculation: Accuracy is computed as the percentage of correctly predicted labels over all test cases.
+
+### Optimizing The Code:
+**Special Data Structures:**
+- Used std::set to manage feature subsets efficiently, ensuring uniqueness and enabling logarithmic time complexity for insertions and deletions.
+- Used std::vector for storing data rows, which supports efficient sequential access and iteration.
+**Algorithmic Improvements:**
+- Limited the search space by pruning subsets that do not improve accuracy.
+- Avoided redundant computations by caching intermediate results where possible.
+**Normalization:**
+- Ensured all features were on the same scale to improve classifier performance and reduce sensitivity to feature magnitude differences.
+
+### Comparison of different algorithms on different datasets and discussion:
+In this project, we implemented two search algorithms: forward selection and backward elimination. Forward selection greedily adds features that improve accuracy. The implementation for this is O(n^2), but because it begins with no features, this algorithm runs faster at the beginning and slows down at the end (as more features are considered). Backward elimination also has an O(n^2) complexity but, because it begins with all features, it begins slow and speeds up towards the end of the evaluation. Similarly, the memory usage of backward elimination begins large and becomes smaller (because features are being eliminated from consideration) and the memory usage of forward elimination begins small and becomes larger (because features are being added to consideration).
+
+### References:
+- Slides
+- Online documentation
+- https://www.geeksforgeeks.org/measure-execution-time-function-cpp/ for time stamp
+- https://www.w3schools.com/python/matplotlib_scatter.asp for scatter plots
+
+### Contribution of each student in the group:
+- Jyro Jimenez: READ.me, UI, Scatter plot analysis
+- Nhan Nguyen: data normalization, forward selection, classifier.
+- Anika Sood: Backward elimination, UI, performance evaluation
