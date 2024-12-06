@@ -1,3 +1,21 @@
+/*
+
+Group 14, Section 23: Jyro Jimenez - 862231763, Nhan Nguyen - 862315577, Anika Sood - 862283943
+
+Small Dataset Results:
+    Forward: Feature Subset: {3,5}, Acc: 92.000%
+    Backward: Feature Subset: {2,4,5,7,10}, Acc: 82.000%
+Large Dataset Results:
+    Forward: Feature Subset: {1,27}, Acc: 95.500%
+    Backward: Feature Subset:  {27}, Acc: 84.700%
+Titanic Dataset Results:
+    Forward: Feature Subset: {2}, Acc: 78.011%
+    Backward: Feature Subset:  {2}, Acc: 78.011%
+
+*/
+
+
+
 #include <iostream>
 #include <iomanip>
 // measure time
