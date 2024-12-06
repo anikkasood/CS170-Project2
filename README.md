@@ -488,6 +488,6 @@ In this project, we implemented two search algorithms: forward selection and bac
 - https://www.w3schools.com/python/matplotlib_scatter.asp for scatter plots
 
 ### Contribution of each student in the group:
-- Jyro Jimenez: 
-- Nhan Nguyen: 
-- Anika Sood: 
+- Jyro Jimenez: READ.me, UI, Scatter plot analysis
+- Nhan Nguyen: data normalization, forward selection, classifier.
+- Anika Sood: Backward elimination, UI, performance evaluation
