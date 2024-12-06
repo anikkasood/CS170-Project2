@@ -76,7 +76,7 @@ public:
     void forwardSelection() {
         set<int> cur_features;
         cout << "Forward Selection:" << endl;
-        cout << "Using no features and 'random' evaluation, I get an accuracy of "
+        cout << "Using no features and nearest neighbor evaluation, I get an accuracy of "
              << eval(cur_features, this->data) << "%" << endl;
         cout << "Beginning search.\n" << endl;
 
