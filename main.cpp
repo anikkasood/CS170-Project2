@@ -1,16 +1,19 @@
 #include <iostream>
 #include <iomanip>
+// measure time
+#include <chrono>
 
 //header files
 #include "SearchAlgos/search.cpp"
 #include "SearchAlgos/data.h"
 
 using namespace std;
+using namespace std::chrono;
 
 int main(int argc, char* argv[]) {
     //input which data set to test
     int test = 0;
-    cout << "Choose data set to test (1 or 2): ";
+    cout << "Choose data set to test (1, 2 or 3): ";
     cin >> test;
 
     //get file name
@@ -25,6 +28,10 @@ int main(int argc, char* argv[]) {
             //test large dataset
             filename = "test/large-test-dataset.txt";
             break;
+        case 3:
+            //test titanic dataset
+            filename = "test/titanic-test-dataset.txt";
+            break;
         default:
             filename = "test/small-test-dataset.txt";
             break;
@@ -36,8 +43,17 @@ int main(int argc, char* argv[]) {
     // Load data from file
     vector<DataRow> data = loadData(filename);
 
+    // Get starting timepoint for normalizing data
+    auto normalizeStart = high_resolution_clock::now();
+
     // Normalize data
     zNormalizeData(data);
+
+    // Get ending timepoint for normalizing data
+    auto normalizeStop = high_resolution_clock::now();
+
+    //get duration for normalization
+    auto normalizationDuration = duration_cast<microseconds>(normalizeStop - normalizeStart);
 
     // Print normalized data
     std::cout << "Normalized Data:" << std::endl;
@@ -54,6 +70,9 @@ int main(int argc, char* argv[]) {
     //initialize selection class
     Selection selector(data[0].features.size(), data);
 
+    // Get starting timepoint for computing accuracy
+    auto accuracyStart = high_resolution_clock::now();
+
     //output chosen search
     switch(featureSelect) {
         case 1:
@@ -69,6 +88,16 @@ int main(int argc, char* argv[]) {
             selector.forwardSelection();
             break;
     }
+
+    // Get ending timepoint for computing accuracy
+    auto accuracyStop = high_resolution_clock::now();
+
+    //get duration for computing accuracy
+    auto accuracyDuration = duration_cast<microseconds>(accuracyStop - accuracyStart);
+
+    //output time for normalization and computing accuracy
+    cout << "\nNormalization time       : " << normalizationDuration.count() << " microseconds" << endl;
+    cout << "Accuracy Computation time: " << accuracyDuration.count() << " microseconds" << endl;
 
     return 0;
 }
